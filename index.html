@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="../output.css">
+</head>
+
+<body class="scroll-smooth bg-zinc-950">
+
+  <nav class="w-full border-b border-zinc-600 bg-zinc-950/95 rounded-b-2xl backdrop-blur-md fixed z-10">
+    <div class="mx-auto flex items-center justify-between px-5 py-4 md:px-10 lg:px-16">
+      <!-- Logo -->
+      <a href="#" class="text-lg font-semibold tracking-wide text-white md:text-xl">MS.KHANZADAH</a>
+      <!-- Desktop Navigation -->
+      <div class="hidden items-center gap-8 md:flex">
+        <a href="#about" class="text-sm font-medium text-zinc-400 hover:text-white hover:after:w-full">About</a>
+        <a href="skills.html" class="text-sm font-medium text-zinc-400 hover:text-white hover:after:w-full">Skills</a>
+        <a href="#projects" class="text-sm font-medium text-zinc-400 hover:text-white hover:after:w-full">Projects</a>
+        <a href="#contact" class="text-sm font-medium text-zinc-400 hover:text-white hover:after:w-full">Contact </a>
+        <a href="#contact"
+          class="rounded-lg bg-white px-4 py-2 text-sm font-medium text-zinc-950 hover:bg-zinc-200">Let's Connect</a>
+      </div>
+      <!-- Mobile Menu Button -->
+      <button type="button" class="text-2xl text-zinc-300 hover:text-white md:hidden">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative isolate overflow-hidden pt-20 bg-zinc-950 text-white">
+
+    <!-- Ambient Glow -->
+    <!-- Interactive Dot Background -->
+    <!-- <canvas id="dot-canvas" class="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true">
+    </canvas> -->
+
+    <!-- Hero Content -->
+    <div class="relative z-10 mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 md:px-10 lg:px-16 lg:py-28">
+      <div class="grid items-center gap-12 md:grid-cols-2 md:gap-10">
+        <!-- Left: Introduction -->
+        <div>
+          <p class="mb-5 text-sm font-medium tracking-[0.2em] text-zinc-400">AI & DATA SCIENCE</p>
+          <!-- Main Heading -->
+          <h1 class="text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            I BUILD
+            <br>
+            THINGS WITH
+            <br>
+            TECHNOLOGY.
+          </h1>
+          <!--Small Description -->
+          <p class="mt-6 mb-6 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg">I'm Saami, an AI & Data Science
+            student
+            learning to turn ideas into useful digital products.</p>
+        </div>
+        <!-- Buttons -->
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="#projects"
+            class="rounded-lg bg-white px-6 py-3 text-center text-sm font-medium text-zinc-950 transition hover:bg-zinc-200">View
+            My Work</a>
+          <a href="#contact"
+            class="rounded-lg border border-zinc-700 px-6 py-3 text-center text-sm font-medium text-white transition hover:border-zinc-500">Let's
+            Connect</a>
+        </div>
+      </div>
+      <!-- Right: Glass Identity Card -->
+
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <script>
+    const canvas = document.getElementById("dot-canvas");
+    const ctx = canvas.getContext("2d");
+    const hero = canvas.parentElement;
+
+    let dots = [];
+    let mouse = {
+      x: -1000,
+      y: -1000
+    };
+
+    const spacing = 24;
+    const interactionRadius = 180;
+
+    // Set canvas size
+    function resizeCanvas() {
+      const rect = hero.getBoundingClientRect();
+      const pixelRatio = window.devicePixelRatio || 1;
+
+      canvas.width = rect.width * pixelRatio;
+      canvas.height = rect.height * pixelRatio;
+
+      ctx.setTransform(
+        pixelRatio, 0,
+        0, pixelRatio,
+        0, 0
+      );
+
+      createDots(rect.width, rect.height);
+      drawDots();
+    }
+
+    // Create the dot grid
+    function createDots(width, height) {
+      dots = [];
+
+      for (let y = 12; y < height; y += spacing) {
+        for (let x = 12; x < width; x += spacing) {
+          dots.push({
+            x: x,
+            y: y
+          });
+        }
+      }
+    }
+
+    // Draw dots on the background
+    function drawDots() {
+      const rect = hero.getBoundingClientRect();
+
+      ctx.clearRect(0, 0, rect.width, rect.height);
+
+      dots.forEach(function (dot) {
+        const distance = Math.hypot(
+          dot.x - mouse.x,
+          dot.y - mouse.y
+        );
+
+        let opacity = 0.12;
+        let radius = 1;
+
+        // Brighten dots near the mouse
+        if (distance < interactionRadius) {
+          const strength = 1 - distance / interactionRadius;
+
+          opacity = 0.12 + strength * 0.65;
+          radius = 1 + strength * 1.2;
+        }
+
+        ctx.beginPath();
+
+        ctx.arc(
+          dot.x,
+          dot.y,
+          radius,
+          0,
+          Math.PI * 2
+        );
+
+        ctx.fillStyle = `rgba(220, 230, 240, ${opacity})`;
+
+        ctx.fill();
+      });
+    }
+
+    // Track mouse movement
+    hero.addEventListener("mousemove", function (event) {
+      const rect = hero.getBoundingClientRect();
+
+      mouse.x = event.clientX - rect.left;
+      mouse.y = event.clientY - rect.top;
+
+      drawDots();
+    });
+
+    // Reset when mouse leaves the Hero
+    hero.addEventListener("mouseleave", function () {
+      mouse.x = -1000;
+      mouse.y = -1000;
+
+      drawDots();
+    });
+
+    // Recalculate when the Hero changes size
+    window.addEventListener("resize", resizeCanvas);
+
+    // Initial setup
+    resizeCanvas();
+  </script> -->
+
+</body>
+
+</html>
