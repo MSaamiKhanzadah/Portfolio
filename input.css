@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Isometra&display=swap');
+@import "tailwindcss";
+
+@theme{
+  --color-brand: green;
+  --font-style: "Isometra", serif;
+}
+
+/* .btn-primary{
+  @apply bg-blue-600 text-white font-medium p-4 rounded-lg hover:bg-sky-400 hover:text-lg shadow ring-2 ring-sky-600 hover:ring-0
+}*/
+
+@utility btn-primary{
+  @apply bg-blue-600 text-white font-medium p-4 rounded-lg hover:bg-sky-400 hover:text-lg shadow ring-2 ring-sky-600 hover:ring-0 cursor-pointer
+}
